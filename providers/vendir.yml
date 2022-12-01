@@ -13,10 +13,10 @@ directories:
   contents:
   - path: .
     git:
-      url: git@github.com:vmware-tanzu/community-edition.git
-      ref: 639dfcff20d0edfd3a008e8a64018d5725c09ad8
+      url: git@github.com:wenqiq/community-edition.git
+      ref: ddd440aeb9cdb48438d7e28ef999548df6c562ce
     includePaths:
-    - addons/packages/antrea/1.7.1/bundle/config/**/*
+    - addons/packages/antrea/1.7.1-p1/bundle/config/**/*
     - addons/packages/calico/3.24.1/bundle/config/**/*
 - path: ytt/vendir/kapp-controller/_ytt_lib
   contents:

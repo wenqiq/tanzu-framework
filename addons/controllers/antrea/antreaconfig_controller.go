@@ -91,6 +91,13 @@ func (r *AntreaConfigReconciler) Reconcile(ctx context.Context, req ctrl.Request
 		return retResult, err
 	}
 
+	if antreaConfig.Spec.Antrea.AntreaConfigDataValue.AntreaNsx.Enable {
+		if retResult, err := r.ReconcileAntreaInterworkingConfig(ctx, req, cluster); err != nil {
+			log.Error(err, "unable to reconcile AntreaInterworkingConfig")
+			return retResult, err
+		}
+	}
+
 	return ctrl.Result{}, nil
 }
 

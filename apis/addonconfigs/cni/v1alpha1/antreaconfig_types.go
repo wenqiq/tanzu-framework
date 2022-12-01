@@ -19,60 +19,60 @@ type Antrea struct {
 }
 
 type AntreaEgress struct {
-	//+ kubebuilder:validation:Optional
+	// + kubebuilder:validation:Optional
 	EgressExceptCIDRs []string `json:"exceptCIDRs,omitempty"`
 }
 
 type AntreaNodePortLocal struct {
-	//+ kubebuilder:validation:Optional
+	// + kubebuilder:validation:Optional
 	Enabled bool `json:"enabled,omitempty"`
 
-	//+ kubebuilder:validation:Optional
+	// + kubebuilder:validation:Optional
 	PortRange string `json:"portRange,omitempty"`
 }
 
 type AntreaProxy struct {
-	//+ kubebuilder:validation:Optional
+	// + kubebuilder:validation:Optional
 	ProxyAll bool `json:"proxyAll,omitempty"`
 
-	//+ kubebuilder:validation:Optional
+	// + kubebuilder:validation:Optional
 	NodePortAddresses []string `json:"nodePortAddresses,omitempty"`
 
-	//+ kubebuilder:validation:Optional
+	// + kubebuilder:validation:Optional
 	SkipServices []string `json:"skipServices,omitempty"`
 
-	//+ kubebuilder:validation:Optional
+	// + kubebuilder:validation:Optional
 	ProxyLoadBalancerIPs bool `json:"proxyLoadBalancerIPs,omitempty"`
 }
 
 type AntreaFlowExporter struct {
-	//+ kubebuilder:validation:Optional
+	// + kubebuilder:validation:Optional
 	CollectorAddress string `json:"collectorAddress,omitempty"`
 
-	//+ kubebuilder:validation:Optional
+	// + kubebuilder:validation:Optional
 	PollInterval string `json:"pollInterval,omitempty"`
 
-	//+ kubebuilder:validation:Optional
+	// + kubebuilder:validation:Optional
 	ActiveFlowTimeout string `json:"activeFlowTimeout,omitempty"`
 
-	//+ kubebuilder:validation:Optional
+	// + kubebuilder:validation:Optional
 	IdleFlowTimeout string `json:"idleFlowTimeout,omitempty"`
 }
 
 type AntreaWireGuard struct {
-	//+ kubebuilder:validation:Optional
+	// + kubebuilder:validation:Optional
 	Port int `json:"port,omitempty"`
 }
 
 type AntreaMultiCluster struct {
-	//+ kubebuilder:validation:Optional
+	// + kubebuilder:validation:Optional
 	Enable bool `json:"enable,omitempty"`
-	//+ kubebuilder:validation:Optional
+	// + kubebuilder:validation:Optional
 	Namespace string `json:"namespace,omitempty"`
 }
 
 type AntreaMulticast struct {
-	//+ kubebuilder:validation:Optional
+	// + kubebuilder:validation:Optional
 	IGMPQueryInterval string `json:"igmpQueryInterval,omitempty"`
 }
 
@@ -182,6 +182,10 @@ type AntreaConfigDataValue struct {
 	// FeatureGates is a map of feature names to flags that enable or disable experimental features
 	// +kubebuilder:validation:Optional
 	FeatureGates AntreaFeatureGates `json:"featureGates,omitempty"`
+
+	// AntreaNsx flags that enable or disable antrea-interworking
+	// +kubebuilder:validation:Optional
+	AntreaNsx AntreaNsx `json:"antrea_nsx"`
 }
 
 type AntreaFeatureGates struct {

@@ -1,0 +1,70 @@
+---
+apiVersion: apiextensions.k8s.io/v1
+kind: CustomResourceDefinition
+metadata:
+  annotations:
+    controller-gen.kubebuilder.io/version: v0.9.2
+  creationTimestamp: null
+  name: antrea-interworkingconfigs.cni.tanzu.vmware.com
+spec:
+  group: cni.tanzu.vmware.com
+  names:
+    kind: AntreaInterworkingConfig
+    listKind: AntreaInterworkingConfigList
+    plural: antrea-interworkingconfigs
+    shortNames:
+    - antrea-interworkingconf
+    singular: antreainterworkingconfig
+  scope: Namespaced
+  versions:
+  - additionalPrinterColumns:
+    - description: The NSXCert file path
+      jsonPath: .spec.antrea_interworking.config.nsxCert
+      name: NSXCert
+      type: string
+    name: v1alpha1
+    schema:
+      openAPIV3Schema:
+        description: AntreaInterworkingConfig is the Schema for the antrea-interworking
+          configs API
+        properties:
+          apiVersion:
+            description: 'APIVersion defines the versioned schema of this representation
+              of an object. Servers should convert recognized schemas to the latest
+              internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources'
+            type: string
+          kind:
+            description: 'Kind is a string value representing the REST resource this
+              object represents. Servers may infer this from the endpoint the client
+              submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds'
+            type: string
+          metadata:
+            type: object
+          spec:
+            description: AntreaInterworkingConfigSpec defines the desired state of
+              AntreaInterworkingConfig
+            properties:
+              antrea_interworking:
+                properties:
+                  config:
+                    properties:
+                      nsxCert:
+                        description: Specifies nsxCert file path
+                        type: string
+                    type: object
+                type: object
+            type: object
+          status:
+            description: AntreaConfigStatus defines the observed state of AntreaConfig
+            properties:
+              secretRef:
+                description: Reference to the data value secret created by controller
+                type: string
+            type: object
+        required:
+        - spec
+        type: object
+    served: true
+    storage: true
+    subresources:
+      status: {}

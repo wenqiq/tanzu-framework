@@ -65,6 +65,14 @@ spec:
                 properties:
                   config:
                     properties:
+                      antrea_nsx:
+                        description: AntreaNsx flags that enable or disable antrea-interworking
+                        properties:
+                          enable:
+                            type: boolean
+                        required:
+                        - enable
+                        type: object
                       antreaProxy:
                         description: Specifies AntreaProxy related configuration.
                         properties:
