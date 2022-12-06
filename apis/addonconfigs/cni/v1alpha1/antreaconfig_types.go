@@ -185,7 +185,8 @@ type AntreaConfigDataValue struct {
 
 	// AntreaNsx flags that enable or disable antrea-interworking
 	// +kubebuilder:validation:Optional
-	AntreaNsx AntreaNsx `json:"antrea_nsx"`
+	// +kubebuilder:default:=false
+	AntreaNsx AntreaNsx `json:"antrea_nsx,omitempty"`
 }
 
 type AntreaFeatureGates struct {
